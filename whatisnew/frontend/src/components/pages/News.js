@@ -13,23 +13,14 @@ const News = () => {
       }, //eslint-disable-next-line
       [topic]
     );
-    if (loading || news === null) {
-        return (
-          <div class="spinner-grow" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-        );
-      } else {
     return (
         <div className="container">
-          <Alert />
-            <Form />
-            <h1>{topic}</h1>
-            <Graph ts={ts}/>
-            <NewsList news={news} />
+            <Alert />
+              {/* <Graph loading={loading} ts={ts}/> */}
+              <h1 className="text-center">{topic}</h1>
+              <NewsList loading={loading} news={news} />
         </div>
     )
-      }
 }
 
 export default News

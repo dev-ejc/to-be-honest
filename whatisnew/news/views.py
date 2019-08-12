@@ -21,13 +21,12 @@ def newsView(request,topic):
         if article["content"] is None:
             news["articles"].remove(article)
         else:
-            tb = TextBlob(article["content"])
-            polarity = tb.sentiment.polarity
-            article["sentiment"] = polarity
-            date = article["publishedAt"].split("T")[0]
+            article["publishedAt"] = article["publishedAt"].split("T")[0]
+            article["sentiment"] = round(TextBlob(article["content"]).sentiment.polarity,2)
+            date = article["publishedAt"]
             if date not in time_series.keys():
-                time_series[date] = polarity
+                time_series[date] = article["sentiment"]
             else:
-                time_series[date] += polarity
+                time_series[date] += article["sentiment"]
     news["ts"] = time_series
     return JsonResponse(news,safe=False)
