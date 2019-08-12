@@ -18,7 +18,8 @@ export default (state,action) => {
                 }
         case GET_NEWS:
                 return { ...state,
-                        news: action.payload,
+                        news: action.payload.articles,
+                        ts: action.payload.ts,
                     loading:false }
         case SET_LOADING: 
                 return {

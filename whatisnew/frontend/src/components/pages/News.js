@@ -6,7 +6,7 @@ import Form from '../news/Form'
 import Graph from '../news/Graph'
 const News = () => {
     const newsContext = useContext(NewsContext);
-    const { news, loading, getNews, topic } = newsContext;
+    const { news, loading, getNews, topic,ts } = newsContext;
     useEffect(
       () => {
         getNews();
@@ -25,7 +25,7 @@ const News = () => {
           <Alert />
             <Form />
             <h1>{topic}</h1>
-            {/* <Graph /> */}
+            <Graph ts={ts}/>
             <NewsList news={news} />
         </div>
     )

@@ -8,6 +8,7 @@ const NewsState = props => {
   const initialState = {
     topic:'AI',
     news: null,
+    ts: null,
     error:null,
     loading: false
   };
@@ -72,6 +73,7 @@ const NewsState = props => {
         loading: state.loading,
         error: state.error,
         topic: state.topic,
+        ts: state.ts,
         setError,
         setTopic,
         getNews

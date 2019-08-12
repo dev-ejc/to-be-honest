@@ -19,7 +19,7 @@ const Form = () => {
         }
     }
     return (
-        <form className="form-inline" onSubmit={onSubmit}>
+        <form className="form-inline form-control" onSubmit={onSubmit}>
             <input onChange={onChange} className="form-control" type="text" placeholder="search" />
             <button type="submit" class="btn btn-primary form-control">Search</button>
         </form>

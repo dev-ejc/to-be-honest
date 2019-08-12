@@ -12,15 +12,22 @@ from newsapi import NewsApiClient
 
 def newsView(request,topic):
     newsapi = NewsApiClient(api_key=os.getenv("NEWS_KEY",'Token Not Found'))
-    top_headlines = newsapi.get_top_headlines(q=topic,
-                                          category='business',
-                                          language='en',
-                                          country='us')
-    for article in top_headlines["articles"]:
+    news = newsapi.get_everything(q=topic,
+                                    language='en',
+                                          sort_by="relevancy",
+                                          page_size=10)
+    time_series = {}
+    for article in news["articles"]:
         if article["content"] is None:
-            top_headlines["articles"].remove(article)
+            news["articles"].remove(article)
         else:
             tb = TextBlob(article["content"])
             polarity = tb.sentiment.polarity
             article["sentiment"] = polarity
-    return JsonResponse(top_headlines["articles"],safe=False)
+            date = article["publishedAt"].split("T")[0]
+            if date not in time_series.keys():
+                time_series[date] = polarity
+            else:
+                time_series[date] += polarity
+    news["ts"] = time_series
+    return JsonResponse(news,safe=False)
