@@ -1,11 +1,9 @@
 from django.shortcuts import render
-
-##from .serializers import NewsSerializer
-from django.http import HttpResponse
+from django.http import JsonResponse
 import http
 from http import client
-import textblob
 from textblob import TextBlob
+from textblob.sentiments import NaiveBayesAnalyzer
 import datetime
 import datetime as dt
 import newsapi as na
@@ -18,5 +16,11 @@ def newsView(request,topic):
                                           category='business',
                                           language='en',
                                           country='us')
-    print(top_headlines.articles[0])
-    return HttpResponse("Nice")
+    for article in top_headlines["articles"]:
+        if article["content"] is None:
+            top_headlines["articles"].remove(article)
+        else:
+            tb = TextBlob(article["content"])
+            polarity = tb.sentiment.polarity
+            article["sentiment"] = polarity
+    return JsonResponse(top_headlines["articles"],safe=False)
