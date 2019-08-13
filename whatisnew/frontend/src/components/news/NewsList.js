@@ -1,13 +1,6 @@
 import React from "react";
 import NewsItem from './NewsItem'
-const NewsList = ({ news,loading }) => {
-  if (loading || news === null) {
-    return (
-      <div class="spinner-grow" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    );
-  } else {
+const NewsList = ({ news }) => {
     return (
       <div className="container">
         {news.map(n => (
@@ -15,7 +8,6 @@ const NewsList = ({ news,loading }) => {
         ))}
       </div>
     );
-  }
 };
 
 export default NewsList;
