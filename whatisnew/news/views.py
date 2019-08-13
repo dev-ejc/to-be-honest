@@ -11,11 +11,19 @@ import os
 from newsapi import NewsApiClient
 
 def newsView(request,topic):
-    newsapi = NewsApiClient(api_key=os.getenv("NEWS_KEY",'Token Not Found'))
-    news = newsapi.get_everything(q=topic,
+    def pull():
+        result = {"articles":[]}
+        for i in range(1,2):
+            current = newsapi.get_everything(q=topic,
                                     language='en',
                                           sort_by="relevancy",
-                                          page_size=100)
+                                          page_size=100,
+                                          page=i)
+            result["articles"] = result["articles"] + current["articles"]
+        return result
+    newsapi = NewsApiClient(api_key=os.getenv("NEWS_KEY",'Token Not Found'))
+    news = pull()
+    print(len(news["articles"]))
     time_series = {}
     for article in news["articles"]:
         if article["content"] is None:
@@ -29,4 +37,5 @@ def newsView(request,topic):
             else:
                 time_series[date] += article["sentiment"]
     news["ts"] = time_series
+    news["articles"] = news["articles"][0:9]
     return JsonResponse(news,safe=False)

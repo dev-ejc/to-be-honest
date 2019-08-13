@@ -6,24 +6,25 @@ const Sentiment = ({ ts }) => {
       return a + b;
     }) / Object.values(ts).length
   ).toFixed(2);
+  let color =
+    sentiment >= 0.5 ? "success" : sentiment < -0.5 ? "danger" : "secondary";
   return (
     <div className="container justify-content center">
-      <h1 className="text-center">
+      <h3 className="text-center">
         <i
-          className={`far fa-${sentiment >= 0.5
-            ? "smile-beam"
-            : sentiment < -0.5
-            ? "sad-cry"
-            : "meh"} fa-xl`
-          }
+          className={`far fa-${
+            sentiment >= 0.5
+              ? "smile-beam"
+              : sentiment < -0.5
+              ? "sad-cry"
+              : "meh"
+          } text-${color} fa-7x`}
         />
-      </h1>
-      <h1 className={`text-center ${sentiment >= 0.5
-            ? "text-success"
-            : sentiment < -0.5
-            ? "text-danger"
-            : "text-secondary"}`
-          } >{sentiment}</h1>
+      </h3>
+      <h3 className={`text-center`}>
+        {"Sentiment: "}
+        <span className={`text-${color}`}>{sentiment}</span>
+      </h3>
     </div>
   );
 };

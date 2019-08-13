@@ -4,11 +4,15 @@ import SentimentItem from "../sentiment/SentimentItem";
 const NewsItem = ({ n }) => {
   return (
     <div className="card">
-        <h5 class="card-title text-center mb-1">{n.title.split("-")[0]}</h5>
       <div className="card-body container">
-        <SentimentItem sentiment={n.sentiment}/>
+      <h5 class="card-title text-center mb-1">{n.title}</h5>
+        {/* <SentimentItem sentiment={n.sentiment}/> */}
         <table className="table">
           <tbody>
+          <tr>
+              <td>Sentiment</td>
+              <td>{n.sentiment}</td>
+            </tr>
             <tr>
               <td>Source</td>
               <td>{n.source.name}</td>

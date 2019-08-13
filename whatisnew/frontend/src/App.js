@@ -7,7 +7,7 @@ const App = () => {
     return (
     <NewsState>
       <Navbar />
-      <div className="App container">
+      <div className="App bg-primary">
         <News />
       </div>
     </NewsState>
