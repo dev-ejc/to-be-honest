@@ -1,1 +1,1 @@
-web: gunicorn what-is-new/whatisnew.wsgi
+web: python whatisnew/manage.py runserver
