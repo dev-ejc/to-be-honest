@@ -15,7 +15,7 @@ def newsView(request,topic):
     news = newsapi.get_everything(q=topic,
                                     language='en',
                                           sort_by="relevancy",
-                                          page_size=10)
+                                          page_size=100)
     time_series = {}
     for article in news["articles"]:
         if article["content"] is None:

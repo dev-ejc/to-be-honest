@@ -8,13 +8,13 @@ const NewsItem = ({ n }) => {
       <h5 className="card-text text-center">{"Sentiment: "}<span class="badge badge-primary badge">{n.sentiment}</span></h5>
             <div className="list-group">
               <li className="list-group-item">
-                <small>{n.publishedAt}</small>
+                <h7 className="card-text mb-1">{n.source.name}</h7>
               </li>
               <li className="list-group-item">
                 <h7 className="card-text mb-1">{n.author}</h7>
               </li>
               <li className="list-group-item">
-                <h7 className="card-text mb-1">{n.source.name}</h7>
+                <small>{n.publishedAt}</small>
               </li>
             </div>
           </div>

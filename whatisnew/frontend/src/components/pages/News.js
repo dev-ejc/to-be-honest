@@ -14,11 +14,11 @@ const News = () => {
       [topic]
     );
     return (
-        <div className="container">
+        <div className="container justifiy-content-center align-content-center">
             <Alert />
-              {/* <Graph loading={loading} ts={ts}/> */}
               <h1 className="text-center">{topic}</h1>
-              <NewsList loading={loading} news={news} />
+              <Graph loading={loading} ts={ts}/>
+            <NewsList loading={loading} news={news} />
         </div>
     )
 }
