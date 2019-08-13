@@ -7,7 +7,7 @@ const NewsItem = ({ n }) => {
       <div className="card-body container">
       <h5 class="card-title text-center mb-1">{n.title}</h5>
         {/* <SentimentItem sentiment={n.sentiment}/> */}
-        <table className="table">
+        <table className="table table-responsive-sm">
           <tbody>
           <tr>
               <td>Sentiment</td>
@@ -27,7 +27,7 @@ const NewsItem = ({ n }) => {
             </tr>
           </tbody>
         </table>
-        <a href={n.url} className="btn btn-primary form-control">Link</a>
+        <button href={n.url} className="btn btn-primary form-control">Article</button>
       </div>
     </div>
   );

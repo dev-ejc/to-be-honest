@@ -17,7 +17,7 @@ const News = () => {
     <div className="card">
       <div className="card-body align-content-center justify-content-center">
       {loading || ts === null ? (
-        <div class="spinner-border text-primary" role="status">
+        <div class="spinner-border mx-auto text-center text-primary" role="status">
           <span class="sr-only">Loading...</span>
         </div>
       ) : (
