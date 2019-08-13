@@ -1,1 +1,1 @@
-web: cd whatisnew gunicorn whatisnew.wsgi
+web: gunicorn --chdir whatisnew whatisnew.wsgi
