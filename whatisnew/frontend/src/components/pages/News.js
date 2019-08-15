@@ -11,12 +11,12 @@ const News = () => {
     () => {
       getNews('Artificial Intelligence');
     }, //eslint-disable-next-line
-    [topic]
+    []
   );
   return (
     <div className="card">
       <div className="card-body align-content-center justify-content-center">
-      {loading || ts === null ? (
+      {loading || ts === null || topic === '' ? (
         <div class="spinner-border mx-auto text-center text-primary" role="status">
           <span class="sr-only">Loading...</span>
         </div>

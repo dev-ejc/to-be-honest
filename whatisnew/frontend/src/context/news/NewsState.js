@@ -6,7 +6,7 @@ import axios from "axios";
 
 const NewsState = props => {
   const initialState = {
-    topic:'Artificial Intelligence',
+    topic:'',
     news: [],
     ts: [0],
     error:null,
