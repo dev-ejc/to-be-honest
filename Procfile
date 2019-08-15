@@ -1,0 +1,1 @@
+web: gunicorn --chdir whatisnew whatisnew.wsgi

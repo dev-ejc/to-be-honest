@@ -9,7 +9,7 @@ const News = () => {
   const { news, loading, getNews, topic, ts } = newsContext;
   useEffect(
     () => {
-      getNews();
+      getNews('Artificial Intelligence');
     }, //eslint-disable-next-line
     [topic]
   );

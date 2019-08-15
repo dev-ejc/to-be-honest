@@ -27,7 +27,7 @@ const NewsItem = ({ n }) => {
             </tr>
           </tbody>
         </table>
-        <button href={n.url} className="btn btn-primary form-control">Article</button>
+        <a href={n.url} className="btn btn-primary form-control">Article</a>
       </div>
     </div>
   );

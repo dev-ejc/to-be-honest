@@ -7,28 +7,42 @@ import axios from "axios";
 const NewsState = props => {
   const initialState = {
     topic:'Artificial Intelligence',
-    news: null,
-    ts: null,
+    news: [],
+    ts: [0],
     error:null,
     loading: false
   };
 
   const [state, dispatch] = useReducer(newsReducer, initialState);
 
-  const getNews = () => {
+  const getNews = (topic) => {
     setLoading();
-    console.log(state.topic)
+    setTopic(topic)
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+    const config = {
+      signal
+    };
     axios
-      .get(`/news/${state.topic}`)
-      .then(res =>
+      .get(`/news/${topic}`,config)
+      .then(res => {
+        if(
+          res.data.articles.length === 0
+        ) {
+          stopLoading()
+          abortController.abort()
+          setError(`No News for ${topic}`,"danger",)
+        } else {
         dispatch({
           type: GET_NEWS,
           payload: res.data
         })
-      )
+        abortController.abort()
+      }})
       .catch(err => {
         stopLoading()
-        setError(err.message,"danger")
+        abortController.abort()
+        setError(err.message,"danger",)
       }
       )};
 
