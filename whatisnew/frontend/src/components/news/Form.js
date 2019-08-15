@@ -3,7 +3,7 @@ import NewsContext from "../../context/news/newsContext";
 
 const Form = () => {
     const newsContext = useContext(NewsContext)
-    const { setTopic, setError } = newsContext
+    const { setTopic, setError, getNews } = newsContext
     const [state, setState] = useState('')
     
     const onChange = (e) => {
@@ -12,7 +12,7 @@ const Form = () => {
     const onSubmit = (e) => {
         e.preventDefault()
         if(state.length > 0) {
-            setTopic(state.toLowerCase())
+            getNews(state.toLowerCase())
             setState('')
         } else {
             setError("Input a search", "danger")
