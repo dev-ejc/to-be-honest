@@ -15,18 +15,18 @@ const News = () => {
   );
   return (
     <div className="card">
-      <div className="card-body align-content-center justify-content-center">
+      <div className="card-body">
       {loading || ts === null || topic === '' ? (
-        <div class="spinner-border mx-auto text-center text-primary" role="status">
+        <div class="spinner-border mx-auto text-primary" role="status">
           <span class="sr-only">Loading...</span>
         </div>
       ) : (
-        <Fragment>
+        <div>
           <Alert />
           <h1 className="card-title text-center mx-2">{topic[0].toUpperCase() + topic.slice(1)}</h1>
           <Sentiment ts={ts} />
           <NewsList news={news} />
-        </Fragment>
+        </div>
       )}
       </div>
     </div>
