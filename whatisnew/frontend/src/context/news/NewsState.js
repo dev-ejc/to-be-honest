@@ -17,7 +17,6 @@ const NewsState = props => {
 
   const getNews = (topic) => {
     setLoading();
-    setTopic(topic)
     const abortController = new AbortController();
     const signal = abortController.signal;
     const config = {
@@ -33,6 +32,7 @@ const NewsState = props => {
           abortController.abort()
           setError(`No News for ${topic}`,"danger",)
         } else {
+          setTopic(topic)
         dispatch({
           type: GET_NEWS,
           payload: res.data
