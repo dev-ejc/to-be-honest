@@ -1,12 +1,11 @@
 import React from "react";
-import SentimentItem from "../sentiment/SentimentItem";
 
 const NewsItem = ({ n }) => {
   return (
-    <div className="card">
-      <div className="card-body container">
+    <div className="card text-center">
+      <div className="card-body">
+      <a href={n.url}><img src={n.urlToImage} className="card-image rounded img-fluid" alt="Responsive"/></a>
       <h5 class="card-title text-center mb-1">{n.title}</h5>
-        {/* <SentimentItem sentiment={n.sentiment}/> */}
         <table className="table table-responsive-sm">
           <tbody>
           <tr>
@@ -27,9 +26,8 @@ const NewsItem = ({ n }) => {
             </tr>
           </tbody>
         </table>
-        <a href={n.url} className="btn btn-primary form-control">Article</a>
       </div>
-    </div>
+      </div>
   );
 };
 
