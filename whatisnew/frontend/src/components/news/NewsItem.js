@@ -5,7 +5,7 @@ const NewsItem = ({ n }) => {
     <div className="card text-center">
       <div className="card-body">
       <a href={n.url}><img src={n.urlToImage} className="card-image rounded img-fluid" alt="Responsive"/></a>
-      <h5 class="card-title text-center mb-1">{n.title}</h5>
+      <h5 class="card-title text-center my-2">{n.title}</h5>
         <table className="table table-responsive-sm">
           <tbody>
           <tr>

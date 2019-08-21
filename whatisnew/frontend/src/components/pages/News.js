@@ -40,21 +40,19 @@ const News = () => {
   }
   const current = news[state]
   return (
-    <div className="card">
-      <div className="card-body">
-        <div>
+    <div className="card text-center">
+      <div className="card-body text-center">
           <Alert />
           <h1 className="card-title text-center mx-2">{topic[0].toUpperCase() + topic.slice(1)}</h1>
           <Sentiment ts={ts} />
-          <div className="container">
-            <button onClick={prev}className="btn btn-primary">{"<"}</button>
-            <button onClick={next} className="btn btn-primary">{">"}</button> 
+          <div className="button-group">
+            <button onClick={prev} align="center" className="btn btn-primary m-3"></button>
+            <button onClick={next} align="center" className="btn btn-primary m-3"></button> 
             </div>
           <NewsItem n={current} />
         </div>
       </div>
-    </div>
-  );
+    );
   }
 };
 
