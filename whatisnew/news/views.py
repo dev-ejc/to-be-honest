@@ -37,5 +37,5 @@ def newsView(request,topic):
             else:
                 time_series[date] += article["sentiment"]
     news["ts"] = time_series
-    news["articles"] = news["articles"][0:9]
+    news["articles"] = news["articles"]
     return JsonResponse(news,safe=False)
