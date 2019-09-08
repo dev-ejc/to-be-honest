@@ -14,7 +14,6 @@ const NewsState = props => {
   };
 
   const [state, dispatch] = useReducer(newsReducer, initialState);
-
   const getHeadlines = () => {
     setLoading();
     axios
