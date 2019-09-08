@@ -10,6 +10,7 @@ import newsapi as na
 import os
 from newsapi import NewsApiClient
 
+
 def newsView(request,topic):
     def pull():
         result = {"articles":[]}
@@ -23,7 +24,6 @@ def newsView(request,topic):
         return result
     newsapi = NewsApiClient(api_key=os.getenv("NEWS_KEY",'Token Not Found'))
     news = pull()
-    print(len(news["articles"]))
     time_series = {}
     for article in news["articles"]:
         if article["content"] is None:
@@ -36,6 +36,35 @@ def newsView(request,topic):
                 time_series[date] = article["sentiment"]
             else:
                 time_series[date] += article["sentiment"]
-    news["ts"] = time_series
-    news["articles"] = news["articles"][0:9]
+    news["ts"] = {}
+    for key in sorted(time_series.keys()):
+        news["ts"][key] = time_series[key]
+    return JsonResponse(news,safe=False)
+
+
+def headlinesView(request):
+    def pull():
+        result = {"articles":[]}
+        current = newsapi.get_top_headlines(
+                                    language='en',
+                                          country="us")
+        result["articles"] = result["articles"] + current["articles"]
+        return result
+    newsapi = NewsApiClient(api_key=os.getenv("NEWS_KEY",'Token Not Found'))
+    news = pull()
+    time_series = {}
+    for article in news["articles"]:
+        if article["content"] is None:
+            news["articles"].remove(article)
+        else:
+            article["publishedAt"] = article["publishedAt"].split("T")[0]
+            article["sentiment"] = round(TextBlob(article["content"]).sentiment.polarity,2)
+            date = article["publishedAt"]
+            if date not in time_series.keys():
+                time_series[date] = article["sentiment"]
+            else:
+                time_series[date] += article["sentiment"]
+    news["ts"] = {}
+    for key in sorted(time_series.keys()):
+        news["ts"][key] = time_series[key]
     return JsonResponse(news,safe=False)

@@ -1,5 +1,4 @@
 import React from 'react'
-// Pond
 import { TimeSeries, TimeEvent } from "pondjs";
 import { Charts, ChartContainer, ChartRow,YAxis,LineChart} from 'react-timeseries-charts'
 

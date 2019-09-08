@@ -16,6 +16,7 @@ export default (state,action) => {
                     ...state,
                     error:null
                 }
+        case GET_HEADLINES:
         case GET_NEWS:
                 return { ...state,
                         news: action.payload.articles,

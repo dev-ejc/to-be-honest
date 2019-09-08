@@ -6,6 +6,7 @@
   "engines": {
     "node": "10.16.3"
   },
+  "proxy": "http://localhost:8000/",
   "scripts": {
     "dev": "webpack --mode development ./whatisnew/frontend/src/index.js --output ./whatisnew/frontend/static/frontend/main.js",
     "build": "webpack --mode production ./whatisnew/frontend/src/index.js --output ./whatisnew/frontend/static/frontend/main.js"
