@@ -12,7 +12,7 @@ const Sentiment = ({ ts }) => {
   return (
     <div className="container justify-content-center">
       {/* <SentimentPlot ts={ts} /> */}
-      <h3 className="text-center">
+      <h5 className="text-center">
         <i
           className={`far fa-${
             sentiment >= 0.5
@@ -20,13 +20,13 @@ const Sentiment = ({ ts }) => {
               : sentiment < 0
               ? "sad-cry"
               : "meh"
-          } text-${color} fa-7x`}
+          } text-${color} fa-3x`}
         /> 
-        </h3>
-      <h3 className={`text-center`}>
+        </h5>
+      <h5 className={`text-center`}>
         {"Average Sentiment: "}
         <span className={`text-${color}`}>{sentiment}</span>
-      </h3>
+      </h5>
     </div>
   );
 };

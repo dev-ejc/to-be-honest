@@ -6,7 +6,7 @@ import axios from "axios";
 
 const NewsState = props => {
   const initialState = {
-    topic: 'Artificial Intelligence',
+    topic: 'Today\'\s Headlines',
     news: [],
     ts: [0],
     error: null,
@@ -32,10 +32,9 @@ const NewsState = props => {
       })
       .catch(err => {
         stopLoading()
-        abortController.abort()
         setError(err.message, "danger")
       }
-      )
+    )
   };
 
   const getNews = (topic) => {
@@ -115,7 +114,8 @@ const NewsState = props => {
         ts: state.ts,
         setError,
         setTopic,
-        getNews
+        getNews,
+        getHeadlines
       }}
     >
       {props.children}

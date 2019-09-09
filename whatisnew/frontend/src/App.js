@@ -6,9 +6,9 @@ import Navbar from './components/layout/Navbar'
 const App = () => {
     return (
     <NewsState>
-      <Navbar />
-      <div className="App bg-primary">
+      <div className="App">
         <News />
+        <Navbar />
       </div>
     </NewsState>
     )

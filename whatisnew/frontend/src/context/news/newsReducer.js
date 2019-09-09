@@ -1,4 +1,4 @@
-import {GET_NEWS, SET_LOADING, SET_TOPIC, CLEAR_ERROR, SET_ERROR, STOP_LOADING} from './types'
+import {GET_HEADLINES, GET_NEWS, SET_LOADING, SET_TOPIC, CLEAR_ERROR, SET_ERROR, STOP_LOADING} from './types'
 export default (state,action) => {
     switch(action.type) {
         case SET_TOPIC:

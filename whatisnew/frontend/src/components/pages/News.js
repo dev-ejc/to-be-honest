@@ -6,12 +6,12 @@ import Sentiment from "../sentiment/Sentiment";
 
 const News = () => {
   const newsContext = useContext(NewsContext);
-  const { news, loading, getNews, topic, ts } = newsContext;
+  const { news, loading, getHeadlines, topic, ts } = newsContext;
   const [state,setState] = useState(0)
 
   useEffect(
     () => {
-      getNews('Artificial Intelligence');
+      getHeadlines();
     }, //eslint-disable-next-line
     []
   );
@@ -40,18 +40,17 @@ const News = () => {
   }
   const current = news[state]
   return (
-    <div className="card text-center">
-      <div className="card-body text-center">
+    <div className="container text-center">
           <Alert />
-          <h1 className="card-title text-center mx-2">{topic[0].toUpperCase() + topic.slice(1)}</h1>
+          <h3 className="text-center mx-2">{topic[0].toUpperCase() + topic.slice(1)}</h3>
           <Sentiment ts={ts} />
-          <div className="button-group">
-            <button onClick={prev} align="center" className="btn btn-primary m-3"></button>
-            <button onClick={next} align="center" className="btn btn-primary m-3"></button> 
+          <div className="container">
+            <button onClick={prev} align="center" className="btn btn-primary m-3">{"<"}</button>
+            <h7><span className="text-dark">{state}</span></h7>
+            <button onClick={next} align="center" className="btn btn-primary m-3">{">"}</button> 
             </div>
           <NewsItem n={current} />
         </div>
-      </div>
     );
   }
 };

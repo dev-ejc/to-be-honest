@@ -1,14 +1,21 @@
 import React from "react";
-import Form from "../news/Form";
+import SearchModal from "./SearchModal";
 const Navbar = () => {
   return (
-    <nav class="navbar navbar-expand-lg item-center navbar-light bg-primary ">
-      <a class="navbar-brand text-white mx-auto" href="/">
-        To Be Honest
-      </a>
-      <Form />
-    </nav>
+    <footer className="footer" style={navStyle}>
+      <nav class="navbar item-center navbar-light bg-primary ">
+        <ul className="navbar-nav item-center">
+          <li className="nav-item active"><SearchModal /></li>
+        </ul>
+      </nav>
+    </footer>
   );
 };
+
+const navStyle = {
+  position: 'absolute',
+  bottom: 0,
+  width: '100%'
+}
 
 export default Navbar;

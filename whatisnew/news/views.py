@@ -10,6 +10,19 @@ import newsapi as na
 import os
 from newsapi import NewsApiClient
 
+sources = ['bbc-news',
+            'the-washington-post',
+            'business-insider',
+            'cnn',
+            'cnbc',
+            'fox-news',
+            'national-geographic',
+            'politico',
+            'reuters',
+            'time',
+            'bloomberg',
+            'the-new-york-times',
+            'the-wall-street-journal']
 
 def newsView(request,topic):
     def pull():
@@ -47,7 +60,7 @@ def headlinesView(request):
         result = {"articles":[]}
         current = newsapi.get_top_headlines(
                                     language='en',
-                                          country="us")
+                                    sources=sources)
         result["articles"] = result["articles"] + current["articles"]
         return result
     newsapi = NewsApiClient(api_key=os.getenv("NEWS_KEY",'Token Not Found'))

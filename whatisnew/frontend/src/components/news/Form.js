@@ -20,8 +20,8 @@ const Form = () => {
     }
     return (
         <form className="form-inline mx-auto" onSubmit={onSubmit}>
-            <input onChange={onChange} className="form-control" type="text" placeholder="search" />
-            <button type="submit" class="btn btn-primary form-control">Search</button>
+            <input onChange={onChange} className="form-control" type="text" placeholder="Headline" />
+            <button type="submit" class="btn btn-primary form-control m-3">Search</button>
         </form>
     )
 }
