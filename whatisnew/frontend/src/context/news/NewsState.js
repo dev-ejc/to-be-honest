@@ -7,8 +7,8 @@ import axios from "axios";
 const NewsState = props => {
   const initialState = {
     topic: 'Today\'\s Headlines',
-    news: [],
-    ts: [0],
+    news: null,
+    ts: [],
     error: null,
     loading: false
   };
@@ -39,19 +39,13 @@ const NewsState = props => {
 
   const getNews = (topic) => {
     setLoading();
-    const abortController = new AbortController();
-    const signal = abortController.signal;
-    const config = {
-      signal
-    };
     axios
-      .get(`/news/${topic}`, config)
+      .get(`/news/${topic}`)
       .then(res => {
         if (
           res.data.articles.length === 0
         ) {
           stopLoading()
-          abortController.abort()
           setError(`No News for ${topic}`, "danger")
         } else {
           setTopic(topic)
@@ -59,12 +53,10 @@ const NewsState = props => {
             type: GET_NEWS,
             payload: res.data
           })
-          abortController.abort()
         }
       })
       .catch(err => {
         stopLoading()
-        abortController.abort()
         setError(err.message, "danger")
       }
       )

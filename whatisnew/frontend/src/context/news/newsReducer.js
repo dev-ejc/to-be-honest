@@ -19,7 +19,7 @@ export default (state,action) => {
         case GET_HEADLINES:
         case GET_NEWS:
                 return { ...state,
-                        news: action.payload.articles,
+                        news: action.payload.sources,
                         ts: action.payload.ts,
                     loading:false }
         case SET_LOADING: 
